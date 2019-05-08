@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// 引入后台路由模块
+include base_path('routes/User/User.php');
+
+Route::get('test','testController@index');
