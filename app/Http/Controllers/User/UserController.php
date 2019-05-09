@@ -61,16 +61,17 @@ class UserController extends Controller
         $res_name = User::where('name',$name)->get();
         if(!$res_name){
             $bool = User::create($data);
+            if($bool)
+            {
+                $data = ['stat'=>200,'message'=>'注册成功'];
+            }else{
+                $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
+            }
         }else{
             $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录'];
         }
         
-        if($bool)
-        {
-            $data = ['stat'=>200,'message'=>'注册成功'];
-        }else{
-            $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
-        }
+        
         
         return json_encode($data);
     }
