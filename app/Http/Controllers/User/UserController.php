@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -57,7 +58,7 @@ class UserController extends Controller
             'name'=>$request->post('name'),
             'header_img'=>$request->post('header_img'),
         ];
-        $bool = DB::table('users')->insert($data);
+        $bool = User::create($data);
         if($bool)
         {
             $data = ['stat'=>200,'message'=>'注册成功'];
@@ -68,6 +69,13 @@ class UserController extends Controller
         return json_encode($data);
     }
 
+    public function getinfo(Request $request)
+    {
+        $name = $request->get('name');
+        $res = User::where('name',$name)->first();
+
+        return json_decode($res);
+    }
 
 
 

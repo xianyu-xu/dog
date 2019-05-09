@@ -8,7 +8,7 @@ class User extends Base
 {
     //
     protected $dates = ['users'];
-
+    public $timestamps = true;
 
     // 获取器        get+字段名+Attribute($value)
     public function getCreatedAtAttribute($value) {
