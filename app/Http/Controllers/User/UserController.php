@@ -53,8 +53,11 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $name = $request->post('name');
-        
-        $bool = DB::table('users')->insert(['name'=>$name]);
+        $data= [
+            'name'=>$request->post('name'),
+            'header_img'=>$request->post('header_img'),
+        ];
+        $bool = DB::table('users')->insert($data);
         if($bool)
         {
             $data = ['stat'=>200,'message'=>'注册成功'];

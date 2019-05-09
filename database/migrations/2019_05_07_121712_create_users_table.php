@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name',50)->unique()->comment('微信名称');
+            $table->string('name',50)->comment('微信名称');
+            $table->string('header_img',255)->comment('微信头像');
             $table->timestamps();
         });
     }
