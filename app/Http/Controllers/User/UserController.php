@@ -59,7 +59,7 @@ class UserController extends Controller
             'header_img'=>$request->post('header_img'),
         ];
         $res_name = User::where('name',$name)->get();
-        if($res_name){
+        if(!$res_name){
             $bool = User::create($data);
         }else{
             $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录'];
