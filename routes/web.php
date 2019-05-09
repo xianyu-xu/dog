@@ -21,8 +21,3 @@ include base_path('routes/User/User.php');
 
 Route::get('test','testController@index');
 
-
-
-Route::get('test1',function(){
-    return 1;
-});

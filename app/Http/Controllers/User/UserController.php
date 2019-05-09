@@ -27,9 +27,9 @@ class UserController extends Controller
     }
 
 
-    public function register(Request $request)
+    public function register_phone(Request $request)
     {
-        $phone = $request->post('phone');
+        $phone = $request->post('name');
         $code = $request->post('code');
         $password = $request->post('password');
         $Acode = Cookie::get('code');
@@ -49,6 +49,21 @@ class UserController extends Controller
         return json_encode($data);
     }
 
+
+    public function register(Request $request)
+    {
+        $name = $request->post('name');
+        
+        $bool = DB::table('users')->insert(['name'=>$name]);
+        if($bool)
+        {
+            $data = ['stat'=>200,'message'=>'注册成功'];
+        }else{
+            $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
+        }
+        
+        return json_encode($data);
+    }
 
 
 
