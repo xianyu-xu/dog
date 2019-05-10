@@ -58,17 +58,18 @@ class UserController extends Controller
             'name'=>$request->post('name'),
             'header_img'=>$request->post('header_img'),
         ];
-        $res_name = User::where('name',$name)->get();
-        if(!$res_name){
+        $res_name =DB::table('users')->where('name',$name)->first('id');
+        dump($res_name);
+        if(empty($res_name)){
             $bool = User::create($data);
             if($bool)
             {
-                $data = ['stat'=>200,'message'=>'注册成功','uid'=>$res_name['id'],];
+                $data = ['stat'=>200,'message'=>'注册成功'];
             }else{
                 $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
             }
         }else{
-            $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录','uid'=>$res_name['id'],];
+            $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录','uid'=>$res_name->id,];
         }
         
         
