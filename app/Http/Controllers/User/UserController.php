@@ -63,12 +63,12 @@ class UserController extends Controller
             $bool = User::create($data);
             if($bool)
             {
-                $data = ['stat'=>200,'message'=>'注册成功'];
+                $data = ['stat'=>200,'message'=>'注册成功','uid'=>$res_name['id'],];
             }else{
                 $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
             }
         }else{
-            $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录'];
+            $data = ['stat'=>201,'message'=>'用户已经注册，可直接登录','uid'=>$res_name['id'],];
         }
         
         
