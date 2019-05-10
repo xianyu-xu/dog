@@ -87,7 +87,7 @@ class UserController extends Controller
             $data =  ['stat'=>401,'message'=>'查询用户信息成功','data'=>$res];
         }
        
-        return json_decode($data);
+        return json_encode($data);
     }
 
 
