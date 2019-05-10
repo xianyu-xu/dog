@@ -59,7 +59,6 @@ class UserController extends Controller
             'header_img'=>$request->post('header_img'),
         ];
         $res_name =DB::table('users')->where('name',$name)->first('id');
-        dump($res_name);
         if(empty($res_name)){
             $id = User::insertGetId($data);
             if($id)
