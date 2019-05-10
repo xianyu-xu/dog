@@ -15,11 +15,13 @@ class CreateAnimalsTable extends Migration
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('animal_img',255)->default()->comment('宠物头像');
-            $table->string('animal_name',255)->default()->comment('宠物头像');
-            $table->string('animal_',255)->default()->comment('宠物头像');
-            $table->string('animal_',255)->default()->comment('宠物头像');
-            $table->text('animal_')->default()->comment('宠物头像');
+            $table->string('animal_img',255)->default('')->comment('宠物头像');
+            $table->string('animal_name',50)->default('')->comment('宠物名称');
+            $table->string('animal_sex',255)->default('')->comment('宠物性别');
+            $table->string('animal_year',255)->default('')->comment('宠物生日');
+            $table->text('animal_qianming')->comment('宠物签名');
+            $table->text('animal_shuoming')->comment('宠物说明');
+            $table->string('uid',10)->default()->comment('宠主id');
             $table->timestamps();
         });
     }

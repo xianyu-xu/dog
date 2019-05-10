@@ -78,10 +78,16 @@ class UserController extends Controller
 
     public function getinfo(Request $request)
     {
-        $name = $request->get('name');
-        $res = User::where('name',$name)->first();
-
-        return json_decode($res);
+        $uid = $request->post('uid');
+        if(empty($uid))
+        {
+            $data =  ['stat'=>401,'message'=>'查询用户信息失败 没有传给uid'];
+        }else{
+            $res = User::where('id',$uid)->first();
+            $data =  ['stat'=>401,'message'=>'查询用户信息成功','data'=>$res];
+        }
+       
+        return json_decode($data);
     }
 
 
