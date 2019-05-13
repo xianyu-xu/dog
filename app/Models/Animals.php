@@ -31,8 +31,8 @@ class Animals extends Base
                 }
             }
             
-            
         }
+        return $res;
     }
 
     static function  getinfo($data){
@@ -48,5 +48,6 @@ class Animals extends Base
             }
         
         }
+        return $res;
     }
 }
