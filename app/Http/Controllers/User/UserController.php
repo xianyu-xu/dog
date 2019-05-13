@@ -63,17 +63,15 @@ class UserController extends Controller
             $id = User::insertGetId($data);
             if($id)
             {
-                $data = ['stat'=>200,'message'=>'注册成功','uid'=>$id];
+                $res = ['stat'=>200,'message'=>'注册成功','uid'=>$id];
             }else{
-                $data = ['stat'=>201,'message'=>'注册成功失败，插入数据失败'];
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
             }
         }else{
-            $data = ['stat'=>301,'message'=>'用户已经注册，可直接登录','uid'=>$res_name->id];
+            $res = ['stat'=>201,'message'=>'用户已经注册，可直接登录','uid'=>$res_name->id];
         }
         
-        
-        
-        return json_encode($data);
+        return json_encode($res);
     }
 
     public function getinfo(Request $request)
@@ -81,13 +79,17 @@ class UserController extends Controller
         $uid = $request->post('uid');
         if(empty($uid))
         {
-            $data =  ['stat'=>401,'message'=>'查询用户信息失败 没有传给uid'];
+            $res =  ['stat'=>401,'message'=>'查询用户信息失败 没有传给uid'];
         }else{
-            $res = User::where('id',$uid)->first();
-            $data =  ['stat'=>401,'message'=>'查询用户信息成功','data'=>$res];
+            $data = User::where('id',$uid)->first();
+            if(empty($data)){
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+            }else{
+                $res =  ['stat'=>400,'message'=>'查询用户信息成功','data'=>$data];
+            }
         }
        
-        return json_encode($data);
+        return json_encode($res);
     }
 
 

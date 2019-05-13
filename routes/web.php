@@ -19,5 +19,6 @@ Route::get('/', function () {
 // 引入后台路由模块
 include base_path('routes/User/User.php');
 
-Route::get('test','testController@index');
+include base_path('routes/Animal/animal.php');
+
 
