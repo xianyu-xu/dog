@@ -20,7 +20,7 @@ class AnimalController extends Controller
 
     public function animal_getinfo(Request $request){
         $data = $request->post('uid');
-        $res = $Animal::getinfo($data);
+        $res = Animals::getinfo($data);
 
         return json_encode($res);
     }
