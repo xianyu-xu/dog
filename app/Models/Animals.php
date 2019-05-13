@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Animals extends Base
 {
@@ -36,9 +37,10 @@ class Animals extends Base
 
     static function  getinfo($data){
         if(empty($data)){
+            
             $res =  ['stat'=>602,'message'=>'没有用户id'];
         }else{
-            $data = Animals::where('uid',$data)->all();
+            $data = DB::table('animals')->where('uid',$data)->get();
             if(empty($data)){
                 $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
             }else{
