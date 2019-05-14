@@ -13,7 +13,6 @@ class AnimalController extends Controller
     {
         $data = $request->post('animal_data');
         $res = Animals::add($data);
-
         return json_encode($res);
     }
 
