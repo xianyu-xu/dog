@@ -9,4 +9,6 @@ class Base extends Model
     //
     // use Query;
     protected $guarded = [];
+
+    public $timestamps = true;
 }
