@@ -12,7 +12,7 @@ class AnimalController extends Controller
     public function animal_add(Request $request)
     {
         $data = $request->post('animal_data');
-        var_dump($data['data']);die;
+        var_dump($data);die;
         $res = Animals::add($data);
 
         return json_encode($res);
