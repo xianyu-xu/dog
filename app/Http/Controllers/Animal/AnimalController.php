@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Animal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Animals;
+use Illuminate\Support\Facades\Input;
 
 class AnimalController extends Controller
 {
@@ -12,6 +13,8 @@ class AnimalController extends Controller
     public function animal_add(Request $request)
     {
         $data = $request->post('animal_data');
+        // $data = Input::all();
+        // dump($data);
         $res = Animals::add($data);
         return json_encode($res);
     }
@@ -23,3 +26,4 @@ class AnimalController extends Controller
         return json_encode($res);
     }
 }
+?>
