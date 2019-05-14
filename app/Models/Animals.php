@@ -17,12 +17,12 @@ class Animals extends Base
         if(empty($data)){
             $res =  ['stat'=>501,'message'=>'宠物信息错误'];
         }else{
-            $bool = Animals::where('animal_name',$data['animal_name'])->exists();
+            $bool = DB::table('animals')->where('animal_name',$data['animal_name'])->exists();
             if($bool)
             {
                 $res =  ['stat'=>601,'message'=>'宠物名称已存在'];
             }else{
-                $id = Animals::insertGetId($data);
+                $id = DB::table('animals')->insertGetId($data);
                 if($id)
                 {
                     $res =  ['stat'=>500,'message'=>'宠物信息添加成功'];
