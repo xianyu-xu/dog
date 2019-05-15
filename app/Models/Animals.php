@@ -10,7 +10,10 @@ class Animals extends Base
     //
     protected $table=['animals'];
 
-
+    protected $guarded = []; //黑名单
+    
+    public $timestamps = true;
+    protected $fillable=[];//白名单
 
     static function  add($data)
     {
@@ -22,7 +25,7 @@ class Animals extends Base
             {
                 $res =  ['stat'=>601,'message'=>'宠物名称已存在'];
             }else{
-                $id = DB::table('animals')->insertGetId($data);
+                $id = DB::table('animals')->insert($data);
                 if($id)
                 {
                     $res =  ['stat'=>500,'message'=>'宠物信息添加成功'];
@@ -50,4 +53,22 @@ class Animals extends Base
         }
         return $res;
     }
+
+
+    static function  content($data){
+        if(empty($data)){
+            
+            $res =  ['stat'=>702,'message'=>'没有宠物id'];
+        }else{
+            $data = DB::table('animals')->where('id',$data)->get();
+            if(empty($data)){
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+            }else{
+                $res =  ['stat'=>700,'message'=>'查询宠物信息成功','data'=>$data];
+            }
+        
+        }
+        return $res;
+    }
+
 }
