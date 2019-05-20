@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Animals extends Base
 {
     //
-    protected $table=['animals'];
+    protected $table='animals';
 
     protected $guarded = []; //黑名单
     
@@ -76,11 +76,11 @@ class Animals extends Base
         if(empty($id)){
             $res =  ['stat'=>802,'message'=>'没有宠物id'];
         }else{
-            $dres = DB::table('animals')->where('id',$id)->delete();
+            $dres = Animals::destroy($id);
             if($dres){
-                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
-            }else{
                 $res =  ['stat'=>700,'message'=>'删除宠物信息成功'];
+            }else{
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
             }
         }
         return $res;
