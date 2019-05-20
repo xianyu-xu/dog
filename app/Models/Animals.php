@@ -71,6 +71,19 @@ class Animals extends Base
         return $res;
     }
 
-    
+    static function del($id)
+    {
+        if(empty($id)){
+            $res =  ['stat'=>802,'message'=>'没有宠物id'];
+        }else{
+            $dres = DB::table('animals')->where('id',$id)->delete();
+            if($dres){
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+            }else{
+                $res =  ['stat'=>700,'message'=>'删除宠物信息成功'];
+            }
+        }
+        return $res;
+    }
 
 }
