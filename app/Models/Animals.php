@@ -78,9 +78,9 @@ class Animals extends Base
         }else{
             $dres = Animals::destroy($id);
             if($dres){
-                $res =  ['stat'=>700,'message'=>'删除宠物信息成功'];
+                $res =  ['stat'=>700,'message'=>'删除宠物信息成功'.$id];
             }else{
-                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员$id'.$id];
             }
         }
         return $res;
