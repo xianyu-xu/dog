@@ -16,7 +16,7 @@ class UserController extends Controller
     public function UAdd(Request $request)
     {
         $data = $request->all();
-        // dump($data);die;
+        var_dump($data);die;
         if ($data['uid']) {
             $Dres = UserInfo::insert($data);
             if($Dres){
@@ -29,6 +29,14 @@ class UserController extends Controller
         }
         return $res;
 
+    }
+
+    //用户信息查询
+    public function getUInfo(Request $request){
+        $uid = $request->get('uid');
+        if($uid){
+            $data = UserInfo::where('uid',$uid)->select();
+        }
     }
 
     public function phone(Request $request){
