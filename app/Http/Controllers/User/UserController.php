@@ -7,9 +7,30 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\UserInfo;
 
 class UserController extends Controller
 {
+
+    //用户信息写入
+    public function UAdd(Request $request)
+    {
+        $data = $request->all();
+        // dump($data);die;
+        if ($data['uid']) {
+            $Dres = UserInfo::insert($data);
+            if($Dres){
+                $res =  ['stat'=>800,'message'=>'用户信息添加成功','data'=>$data];
+            }else{
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+            }
+        }else {
+            $res = ['stat'=>801,'message'=>'没有用户id，无法添加'];
+        }
+        return $res;
+
+    }
+
     public function phone(Request $request){
         $iphone=$request->get('iphone');
         $code=rand(1000,9999);
