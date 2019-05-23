@@ -15,8 +15,7 @@ class UserController extends Controller
     //用户信息写入
     public function UAdd(Request $request)
     {
-        $data = $request->all();
-        var_dump($data);die;
+        $data = $request->post('userdata');
         if ($data['uid']) {
             $Dres = UserInfo::insert($data);
             if($Dres){
