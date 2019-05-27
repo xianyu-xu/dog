@@ -15,6 +15,10 @@ class CreateTimeThingsTable extends Migration
     {
         Schema::create('time_things', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title',50)->comment('事件标题');
+            $table->string('content',255)->comment('时间内容');
+            $table->string('time',100)->comment('事件时间');
+            $table->string('uid',100)->comment('事件用户');
             $table->timestamps();
         });
     }

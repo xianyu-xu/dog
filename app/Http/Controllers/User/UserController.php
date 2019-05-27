@@ -24,18 +24,26 @@ class UserController extends Controller
                 $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
             }
         }else {
-            $res = ['stat'=>801,'message'=>'没有用户id，无法添加'];
+            $res = ['stat'=>201,'message'=>'没有用户id，无法添加'];
         }
         return $res;
 
     }
 
     //用户信息查询
-    public function getUInfo(Request $request){
+    public function getUContent(Request $request){
         $uid = $request->get('uid');
         if($uid){
-            $data = UserInfo::where('uid',$uid)->select();
+            $data = UserInfo::where('uid',$uid)->get();
+            if ($data) {
+                $res =  ['stat'=>900,'message'=>'用户信息添加成功','data'=>$data];
+            }else{
+                $res = ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
+            }
+        }else {
+            $res = ['stat'=>201,'message'=>'没有用户id，无法添加'];
         }
+        return $res;
     }
 
     public function phone(Request $request){

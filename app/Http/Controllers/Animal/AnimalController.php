@@ -12,7 +12,6 @@ class AnimalController extends Controller
     public function animal_add(Request $request)
     {
         $data = $request->post('animal_data');
-        // $data = $request->all();
         $res = Animals::add($data);
         return json_encode($res);
     }
