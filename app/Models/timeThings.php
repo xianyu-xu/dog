@@ -9,7 +9,7 @@ class timeThings extends Model
     //
     protected $table='time_things';
     public $timestamps = true;
-    protected $fillable=[];//白名单
+    protected $guarded = []; //黑名单
 
 
 
@@ -19,8 +19,8 @@ class timeThings extends Model
             $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
             $arr = json_decode($data);
-        var_dump($arr);die;
-            $bool = timeThings::create($data);
+        // var_dump($arr);die;
+            $bool = timeThings::create($arr);
             if($bool)
             {
                 $res =  ['stat'=>800,'message'=>'时间添加成功'];
