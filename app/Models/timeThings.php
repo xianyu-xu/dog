@@ -23,6 +23,7 @@ class timeThings extends Model
             $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
             $bool = DB::table('time_things')->insert($data);
+            
             if($bool)
             {
                 $res =  ['stat'=>800,'message'=>'时间添加成功'];
