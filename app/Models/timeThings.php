@@ -18,6 +18,7 @@ class timeThings extends Model
         if(empty($data)){
             $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
+            $arr = array();
             $arr = json_decode($data);
         // var_dump($arr);die;
             $bool = timeThings::create($arr);
