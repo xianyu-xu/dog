@@ -16,7 +16,7 @@ class timeThings extends Model
     public static function add($data)
     {
         if(empty($data)){
-            $res =  ['stat'=>801,'message'=>'事件信息错误'];
+            $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
             $bool = timeThings::create($data);
             if($bool)
