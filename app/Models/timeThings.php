@@ -25,7 +25,6 @@ class timeThings extends Model
             $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
             $arr = json_decode($data);
-            var_dump($arr);die;
             $bool = DB::table('time_things')->insert($arr);
             if($bool)
             {
