@@ -26,7 +26,7 @@ class timeThings extends Model
             
             if($bool)
             {
-                $res =  ['stat'=>800,'message'=>'时间添加成功'];
+                $res =  ['stat'=>800,'message'=>'事件添加成功'];
             }else{
                     $res =  ['stat'=>202,'message'=>'数据库请求出错,请联系后台人员'];
             }

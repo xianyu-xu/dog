@@ -9,4 +9,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function () {
     Route::post('addinfo','UserController@UAdd')->name('user.add');
     Route::get('getcontent','UserController@getUContent')->name('user.getcontent');
     Route::post('thingsadd','TimeThingsController@add')->name('user.thingsadd');
+    Route::get('getThings','TimeThingsController@getThings')->name('user.getThings');
 });
