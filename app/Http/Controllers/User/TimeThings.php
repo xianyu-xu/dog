@@ -13,7 +13,6 @@ class TimeThings extends Controller
     {
         // $data  = $request->all();
         $data = $request->post('todothings');
-        // dump($data);die;
         $res = MtimeThings::add($data);
         return json_encode($res);
 
