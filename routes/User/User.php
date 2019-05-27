@@ -8,5 +8,5 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function () {
     Route::post('getinfo','UserController@getinfo')->name('user.getinfo');
     Route::post('addinfo','UserController@UAdd')->name('user.add');
     Route::get('getcontent','UserController@getUContent')->name('user.getcontent');
-    Route::post('thingsadd','TimeThings@add')->name('user.thingsadd');
+    Route::post('thingsadd','TimeThingsController@add')->name('user.thingsadd');
 });

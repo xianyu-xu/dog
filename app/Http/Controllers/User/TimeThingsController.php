@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\timeThings as MtimeThings;
 
-class TimeThings extends Controller
+class TimeThingsController extends Controller
 {
     //
     public function add(Request $request)
