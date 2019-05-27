@@ -19,13 +19,10 @@ class timeThings extends Model
 
     public static function add($data)
     {
-        $arr = array();
-        
         if(empty($data)){
             $res =  ['stat'=>801,'message'=>'事件信息错误'.$data];
         }else{
-            $arr = json_decode($data);
-            $bool = DB::table('time_things')->insert($arr);
+            $bool = DB::table('time_things')->insert($data);
             if($bool)
             {
                 $res =  ['stat'=>800,'message'=>'时间添加成功'];
