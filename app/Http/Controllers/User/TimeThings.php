@@ -11,7 +11,7 @@ class TimeThings extends Controller
     //
     public function add(Request $request)
     {
-        $data = $request->post('todotings');
+        $data = $request->post('todothings');
         $res = MtimeThings::add($data);
         return json_encode($res);
 
