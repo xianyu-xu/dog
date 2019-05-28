@@ -15,7 +15,12 @@ class AnimalController extends Controller
         $res = Animals::add($data);
         return json_encode($res);
     }
-
+    //获取全部宠物信息
+    public function getInfos(Request $request)
+    {
+        $res = Animals::all();
+        return json_encode($res);
+    }
     //获取宠物信息
     public function animal_getinfo(Request $request){
         $data = $request->post('uid');
